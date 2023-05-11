@@ -18,7 +18,7 @@ public class KafkaTaskListener {
     private  final ElasticSyncer elasticSyncer;
 
 
-    @KafkaListener(topics = {"${kafka.userTasks.topicName}"}, groupId = "${kafka.userTasks.groupName}", batch = "false")
+   // @KafkaListener(topics = {"${kafka.userTasks.topicName}"}, groupId = "${kafka.userTasks.groupName}", batch = "false")
 
     public void sync2Elastic(Task task){
         elasticSyncer.syncTask(task);
@@ -27,11 +27,11 @@ public class KafkaTaskListener {
 
     }
 
-    @KafkaListener(topics = {"${kafka.userTasks.topicName}"}, groupId = "${kafka.userTasks.bulkGroupName}", batch = "true")
+  //  @KafkaListener(topics = {"${kafka.userTasks.topicName}"}, groupId = "${kafka.userTasks.bulkGroupName}", batch = "true")
     public void bulkSync2Elastic(List<Task> taskList){
         elasticSyncer.syncTasks(taskList);
 
-        logger.info(taskList.size() + " tasks are  synced  ");
+        logger.info("bulk " + taskList.size() + " tasks are  synced  ");
 
     }
 }

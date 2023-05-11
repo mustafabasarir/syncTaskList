@@ -5,6 +5,7 @@ import com.sample.synctasklist.service.SampleTaskCreater;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -14,14 +15,14 @@ public class SampleTaskController {
     private final SampleTaskCreater sampleTaskCreater;
 
     @GetMapping("api/createSampleTask")
-    public void createSampleTask(Task task) {
+    public void createSampleTask(@RequestBody Task task) {
         sampleTaskCreater.createMessage(task);
 
     }
 
 
     @GetMapping("api/createSampleTask/{count}")
-    public void createSampleTasks(Task task, @PathVariable int count) {
+    public void createSampleTasks(@RequestBody Task task, @PathVariable int count) {
         sampleTaskCreater.createMessages(task, count);
 
     }

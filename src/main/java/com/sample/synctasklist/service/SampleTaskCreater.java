@@ -23,7 +23,7 @@ public class SampleTaskCreater {
 
         for (int i = 0; i < msgCount; i++) {
             kafkaTemplate.send(sampleTopicName, task);
-            logger.info("task published " + task.getTaskId());
+            logger.info(i + ":   task published " + task.getTaskId());
         }
     }
 
